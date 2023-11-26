@@ -10,11 +10,13 @@ services:
       POSTGRES_DB: PostgresDB
     ports:
       - "5432:5432"
+    networks:
+      - shoppinglist-network
   
   spring-app:
     image: backend
     build:
-      context: ./your-spring-app-directory
+      context: ./shoppinglist
       dockerfile: Dockerfile
     container_name: BackendContainer
     ports:
@@ -25,3 +27,23 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/PostgresDB
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 123456
+    networks:
+      - shoppinglist-network
+
+  frontend:
+    container_name: shoppinglistui
+    build:
+      context: ./shoppinglistui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - spring-app
+    networks:
+      - shoppinglist-network
+
+
+networks:
+  shoppinglist-network:
+    name: shoppinglist-network
+    driver: bridge
