@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Model.Shopping;
 import com.example.demo.Service.ShoppingService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ShoppingController {
     
