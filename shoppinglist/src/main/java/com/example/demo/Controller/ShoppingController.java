@@ -17,8 +17,8 @@ import com.example.demo.Model.Shopping;
 import com.example.demo.Service.ShoppingService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class ShoppingController {
     
 
