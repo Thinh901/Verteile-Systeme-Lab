@@ -5,6 +5,7 @@ import AppBar from './Appbar';
 import Table from './Table';
 
 function App() {
+  const baseUrl = "https://8081-thinh901-verteilesystem-j3n57xnahgr.ws-eu106.gitpod.io"
   const [data, setData] = useState([]);
   const [newItem, setNewItem] = useState({
     title: '',
@@ -15,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/shopping');
+        const response = await axios.get(`${baseUrl}/shopping`);
         setData(response.data);
       } catch (error) {
         console.error(error);
@@ -35,7 +36,7 @@ function App() {
 
   const addNewItem = async () => {
     try {
-      const response = await axios.post('http://localhost:8081/shopping', newItem);
+      const response = await axios.post(`${baseUrl}/shopping`, newItem);
       setData((prevData) => [...prevData, response.data]);
       setNewItem({
         title: '',
@@ -50,7 +51,7 @@ function App() {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:8081/shopping/${id}`);
+      await axios.delete(`${baseUrl}/shopping/${id}`);
       setData((prevData) => prevData.filter((item) => item.id !== id));
     } catch (error) {
       console.error(error);
@@ -60,7 +61,7 @@ function App() {
   return (
     <>
       <AppBar />
-      <Table shoppingList={data} deleteItem={deleteItem} />
+      <Table shoppingList={data} deleteItem={deleteItem} baseUrl={baseUrl} />
 
       <TextField
         label="Title"

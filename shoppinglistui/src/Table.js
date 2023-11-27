@@ -10,14 +10,14 @@ import axios from "axios"
 import { Checkbox,Button } from "@mui/material";
 
 export default function BasicTable(props) {
-  const { shoppingList, updateItemStatus, deleteItem } = props;
+  const { shoppingList, updateItemStatus, deleteItem,baseUrl } = props;
 
 
 
   const handleDelete = async (id) => {
     try {
       // Send a DELETE request to your server to delete the item
-      await axios.delete(`http://localhost:8081/shopping/${id}`);
+      await axios.delete(`${baseUrl}/shopping/${id}`);
 
       // Call the parent component's function to update the local state
       deleteItem(id);
