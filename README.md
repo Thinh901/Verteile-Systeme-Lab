@@ -1,48 +1,47 @@
-Spring Boot Backend
-Create a Spring Boot application with the following endpoints:
+# Spring Boot Backend
 
-GET /shopping: Get all shopping items
-POST /shopping: Create a new shopping item
-DELETE /shopping/{id}: Delete a shopping item by ID
-DELETE /shopping: Delete all shopping items
-PUT /shopping/{id}: Update a shopping item by ID
-Sample Controller code:
+## Requirements
 
-java
-Copy code
-// Insert your existing ShoppingController code here
-Dockerize the Spring Boot application with the provided Dockerfile.
+  1. Install java 17
+  2. Create a Jar File from the Backend using **mvn clean install -DskipTests**
+  3. Update the **baseUrl** in **App.js** to the desired Gitpod Backend URL.
+  4. Ensure the Frontend Port is exposed to the public.
 
-React Frontend
-Create a React application with components to interact with the Spring Boot backend.
+## Endpoints
 
-Configure the React app to make API requests to http://localhost:8081 (Spring Boot backend).
+- **GET /shopping**: Get all shopping items
+- **POST /shopping**: Create a new shopping item
+- **DELETE /shopping/{id}**: Delete a shopping item by ID
+- **DELETE /shopping**: Delete all shopping items
+- **PUT /shopping/{id}**: Update a shopping item by ID
 
-Dockerize the React application with the provided Dockerfile.
+### Application Configuration
 
-Running the Environment
-Open a terminal and navigate to the directory containing the docker-compose.yml file.
+- Backend running on port: `8081`
+- Frontend running on port: `3000`
+- PostgreSQL database running on port: `5432`
 
-Run the following command to start the services:
+### Swagger UI
 
-bash
-Copy code
-docker-compose up -d
-Access the Spring Boot backend at http://localhost:8081.
+- Access Swagger UI at: Your Backend *BaseUrl* 
+  - Swagger JSON endpoint: `/swagger-ui/index.html`
+  - Example: **https://8081-thinh901-verteilesystem-j3n57xnahgr.ws-eu106.gitpod.io/swagger-ui/index.html**
 
-Access the React frontend at http://localhost:3000.
+### Docker
 
-The PostgreSQL database is available on port 5432.
+#### Start the Application
 
-Stopping the Environment
-To stop the services, run:
+```bash
+docker-compose up
 
-bash
-Copy code
+#### Stop the Application
+
+```bash
 docker-compose down
-This concludes the Docker Compose setup for Spring Boot, React, and PostgreSQL.
 
-css
-Copy code
 
-Please make sure to replace the placeholder comments in the Spring Boot section 
+
+
+ 
+
+
