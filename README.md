@@ -31,13 +31,11 @@
 
 #### Start the Application
 
-```bash
-docker-compose up
+**docker-compose up**
 
 #### Stop the Application
 
-```bash
-docker-compose down
+**docker-compose down**
 
 
 
