@@ -1,4 +1,4 @@
-package com.example.demo.Service;
+package com.example.Shoppinglist.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Model.Shopping;
-import com.example.demo.Repository.ShoppingRepository;
+import com.example.Shoppinglist.Model.Shopping;
+import com.example.Shoppinglist.Repository.ShoppingRepository;
 import com.fasterxml.jackson.annotation.OptBoolean;
 
 @Service

@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.Shoppinglist.Controller;
 
 import java.util.List;
 
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Model.Shopping;
-import com.example.demo.Service.ShoppingService;
+import com.example.Shoppinglist.Model.Shopping;
+import com.example.Shoppinglist.Service.ShoppingService;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController

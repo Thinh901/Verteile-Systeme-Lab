@@ -5,10 +5,10 @@ FROM eclipse-temurin:21
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY target/shoppinglist-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port your Spring Boot application is listening on
-EXPOSE 8081:public
+EXPOSE 8081
 
 
 # Command to run the Spring Boot application
