@@ -12,7 +12,7 @@ while providing insights into application performance.
   2. Create a Jar File from the Backend using **mvn clean install -DskipTests**
   3. Update the **baseUrl** in **App.js** to your Backend URL.
      Example: **https://8081-thinh901-verteilesystem-j3n57xnahgr.ws-eu106.gitpod.io*
-  5. Ensure the Backend Port is exposed to **public**.
+  5. Ensure the Backend Port is exposed to **public** (If working with gitpod).
 
 ## Endpoints
 
