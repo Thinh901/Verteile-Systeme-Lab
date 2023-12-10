@@ -10,9 +10,7 @@ import axios from "axios"
 import { Checkbox,Button } from "@mui/material";
 
 export default function BasicTable(props) {
-  const { shoppingList, updateItemStatus, deleteItem,baseUrl } = props;
-
-
+  const { shoppingList,  deleteItem,baseUrl } = props;
 
   const handleDelete = async (id) => {
     try {
