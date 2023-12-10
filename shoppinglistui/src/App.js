@@ -5,7 +5,7 @@ import AppBar from './Appbar';
 import Table from './Table';
 
 function App() {
-  const baseUrl = "https://8081-thinh901-verteilesystem-j3n57xnahgr.ws-eu106.gitpod.io"
+  const baseUrl = "https://8081-thinh901-verteilesystem-avbe3nbjsnf.ws-eu106.gitpod.io"
   const [data, setData] = useState([]);
   const [newItem, setNewItem] = useState({
     title: '',

@@ -2,15 +2,6 @@ version: '3.7'
 
 services:
 
-  jaeger:
-      container_name: jaeger
-      image: jaegertracing/all-in-one:latest
-      ports:
-        - "16686:16686"
-        - "14250:14250"
-      networks:
-        - shoppinglistnetwork
-
   postgres:
     image: postgres
     container_name: postgres
@@ -24,7 +15,6 @@ services:
       - shoppinglistnetwork
   
   spring-app:
-    image: backend
     build:
       context: ./shoppinglist
       dockerfile: Dockerfile
@@ -39,6 +29,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: 123456
       OTEL_SERVICE_NAME: spring-app
       OTEL_TRACES_EXPORTER: jaeger
+      OTEL_METRICS_EXPORTER: none
       OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger:14250
     networks:
       - shoppinglistnetwork
@@ -55,6 +46,15 @@ services:
       - spring-app
     networks:
       - shoppinglistnetwork
+  
+  jaeger-service:
+      container_name: jaeger
+      image: jaegertracing/all-in-one:latest
+      ports:
+        - "16686:16686"
+        - "14250:14250"
+      networks:
+        - shoppinglistnetwork
 
 
 networks:

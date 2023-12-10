@@ -13,5 +13,7 @@ ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/release
 # Expose the port your Spring Boot application is listening on
 EXPOSE 8081
 
+ENV JAVA_TOOL_OPTIONS "-javaagent:./opentelemetry-javaagent.jar"
+
 # Command to run the Spring Boot application with OpenTelemetry
-ENTRYPOINT ["java", "-jar", "-javaagent:./opentelemetry-javaagent.jar", "app.jar"]
+CMD ["java", "-jar", "app.jar"]

@@ -2,6 +2,8 @@ package com.example.Shoppinglist.Controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,26 +17,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Shoppinglist.Model.Shopping;
 import com.example.Shoppinglist.Service.ShoppingService;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
-import io.opentelemetry.instrumentation.annotations.WithSpan;
+
+
 
 @RestController
 @CrossOrigin(origins = "*")
 public class ShoppingController {
     
+    private final Logger logger=LoggerFactory.getLogger(ShoppingController.class);
 
     @Autowired
     private ShoppingService shoppingService;
 
 
-    @WithSpan
     @GetMapping("/shopping")
     ResponseEntity<List<Shopping>> getAllShoppingItems(){
+        logger.info("Get all");
         return new ResponseEntity<>(shoppingService.getAllShoppingItems(),HttpStatus.OK);
     }
 
-    @WithSpan
+
     @PostMapping("/shopping")
     ResponseEntity<Shopping> createShoppingItem(@RequestBody Shopping shopping){
         Shopping createdShoppingItem = shoppingService.createShoppingItem(shopping);
@@ -42,21 +45,21 @@ public class ShoppingController {
         return ResponseEntity.ok(createdShoppingItem);
     }
 
-    @WithSpan
+
     @DeleteMapping("/shopping/{id}")
     ResponseEntity<String> deleteShoppingItem(@PathVariable Integer id){
         shoppingService.deleteShoppingItem(id);
         return ResponseEntity.ok("Deleted");
     }
 
-    @WithSpan
+
     @DeleteMapping("/shopping")
     ResponseEntity<String> deleteAllShoppingItem(){
         shoppingService.deleteAllShoppingItem();
         return ResponseEntity.ok("Deleted All Shopping Items");
     }
 
-    @WithSpan
+
     @PutMapping("/shopping/{id}")
     ResponseEntity<Shopping> updateShoppingItem(@PathVariable Integer id, @RequestBody Shopping shopping){
         return ResponseEntity.ok(shoppingService.updateShopping(id,shopping));
