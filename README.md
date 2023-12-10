@@ -5,7 +5,7 @@
   1. Install java 17
   2. Create a Jar File from the Backend using **mvn clean install -DskipTests**
   3. Update the **baseUrl** in **App.js** to the desired Gitpod Backend URL.
-  4. Ensure the Frontend Port is exposed to the public.
+  4. Ensure the Backend Port is exposed to the public.
 
 ## Endpoints
 
