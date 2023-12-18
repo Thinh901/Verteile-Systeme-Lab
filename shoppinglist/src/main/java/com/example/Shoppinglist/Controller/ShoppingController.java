@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Shoppinglist.Model.Shopping;
 import com.example.Shoppinglist.Service.ShoppingService;
+
+import io.opentelemetry.instrumentation.annotations.SpanAttribute;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
-
-
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -40,11 +42,31 @@ public class ShoppingController {
 
     @PostMapping("/shopping")
     ResponseEntity<Shopping> createShoppingItem(@RequestBody Shopping shopping){
+
+        this.totallyUselessMethod(shopping);
         Shopping createdShoppingItem = shoppingService.createShoppingItem(shopping);
         System.out.println(shopping.getDescription());
         return ResponseEntity.ok(createdShoppingItem);
     }
 
+    @WithSpan
+    public void totallyUselessMethod(@SpanAttribute Shopping shopping){
+
+        if(shopping.getTitle().equals("wait")){
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(shopping.getTitle().equals("crash")){
+
+            System.exit(1);
+        }
+
+    }
 
     @DeleteMapping("/shopping/{id}")
     ResponseEntity<String> deleteShoppingItem(@PathVariable Integer id){
