@@ -11,8 +11,10 @@ COPY target/shoppinglist-0.0.1-SNAPSHOT.jar app.jar
 ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar .
 
 # Expose the port your Spring Boot application is listening on
+# Example for Port Binding
 EXPOSE 8081
 
+# Example for dynamic configuration - I like it!
 ENV JAVA_TOOL_OPTIONS "-javaagent:./opentelemetry-javaagent.jar"
 
 # Command to run the Spring Boot application with OpenTelemetry
